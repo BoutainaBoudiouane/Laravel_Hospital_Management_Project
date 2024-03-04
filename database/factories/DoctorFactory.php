@@ -3,6 +3,7 @@
 namespace Database\Factories;
 use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Section;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Doctor>
@@ -28,6 +29,7 @@ class DoctorFactory extends Factory
             'password' => '$2y$12$FKIOYCS2l8r3iktZ4fcKYehtQjZWXTwkM1Yh7uSocjnoYfeRlYo7W', // password
             'phone' => $this->faker->phoneNumber,
             'price' => $this->faker->randomElement([100,200,300,400,500]),
+            'section_id' => Section::all()->random()->id,
         ];
     }
 }
