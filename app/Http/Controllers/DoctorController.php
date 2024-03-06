@@ -48,11 +48,13 @@ class DoctorController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $this->Doctors->destroy($request);
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        return $this->Doctors->destroy($request);
     }
 }
