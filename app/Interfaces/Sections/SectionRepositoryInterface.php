@@ -17,4 +17,8 @@ interface SectionRepositoryInterface
     // destroy Sections
     public function destroy($request);
 
+    // show Sections
+    public function show($id);
+
+
 }
