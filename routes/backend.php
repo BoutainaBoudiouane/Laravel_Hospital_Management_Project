@@ -8,6 +8,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 use Livewire\Livewire;
+use App\Http\Controllers\Dashboard\InsuranceController;
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -72,7 +73,12 @@ Route::group(
         });
 
          //############################# end GroupServices route ######################################
- 
+   //############################# insurance route ##########################################
+
+   Route::resource('insurance', InsuranceController::class);
+
+   //############################# end insurance route ######################################
+
 
 
     });
