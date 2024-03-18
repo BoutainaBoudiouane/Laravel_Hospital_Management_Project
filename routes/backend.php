@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\SingleServiceController;
 use Livewire\Livewire;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
+use App\Http\Controllers\Dashboard\PatientController;
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -85,6 +86,11 @@ Route::group(
             Route::resource('Ambulance', AmbulanceController::class);
 
             //############################# end Ambulance route ######################################
+              //############################# Patients route ##########################################
+
+        Route::resource('Patients', PatientController::class);
+
+        //############################# end Patients route ######################################
 
 
 
