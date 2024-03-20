@@ -11,6 +11,7 @@ use Livewire\Livewire;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\ReceiptAccountController;
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -86,17 +87,23 @@ Route::group(
             Route::resource('Ambulance', AmbulanceController::class);
 
             //############################# end Ambulance route ######################################
-              //############################# Patients route ##########################################
+            //############################# Patients route ##########################################
 
-        Route::resource('Patients', PatientController::class);
+            Route::resource('Patients', PatientController::class);
 
-        //############################# end Patients route ######################################
+            //############################# end Patients route ######################################
 
-//############################# single_invoices route ##########################################
+            //############################# single_invoices route ##########################################
 
-Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+            Route::view('single_invoices', 'livewire.single_invoices.index')->name('single_invoices');
 
-//############################# end single_invoices route ######################################
+            //############################# end single_invoices route ######################################
+
+            //############################# Receipt route ##########################################
+
+            Route::resource('Receipt', ReceiptAccountController::class);
+
+            //############################# end Receipt route ######################################
 
         });
         require __DIR__ . '/auth.php';
