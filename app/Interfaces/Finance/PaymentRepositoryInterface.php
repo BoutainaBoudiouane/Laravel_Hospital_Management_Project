@@ -6,21 +6,25 @@ namespace App\Interfaces\Finance;
 
 interface PaymentRepositoryInterface
 {
-    // get All Receipt
+    // get All Payment
     public function index();
 
     // show form add
     public function create();
 
-    // store Receipt
+    // store Payment
     public function store($request);
 
-    // edit Receipt
+    // edit Payment
     public function edit($id);
 
-    // Update Receipt
+    // show Payment print
+    public function show($id);
+
+
+    // Update Payment
     public function update($request);
 
-    // destroy Receipt
+    // destroy Payment
     public function destroy($request);
 }
