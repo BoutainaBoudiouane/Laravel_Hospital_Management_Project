@@ -12,6 +12,8 @@ use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
+use App\Http\Controllers\Dashboard\PaymentAccountController;
+
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -104,6 +106,12 @@ Route::group(
             Route::resource('Receipt', ReceiptAccountController::class);
 
             //############################# end Receipt route ######################################
+
+              //############################# Payment route ##########################################
+
+        Route::resource('Payment', PaymentAccountController::class);
+
+        //############################# end Payment route ######################################
 
         });
         require __DIR__ . '/auth.php';
