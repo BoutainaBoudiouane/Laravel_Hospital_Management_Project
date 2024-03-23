@@ -50,6 +50,17 @@ Route::group(
         })->middleware(['auth:admin'])->name('dashboard.admin');
 
         //################################ end dashboard admin #####################################
+
+        
+    //################################ dashboard doctor ########################################
+
+    Route::get('/dashboard/doctor', function () {
+        return view('Dashboard.doctor.dashboard');
+    })->middleware(['auth:doctor'])->name('dashboard.doctor');
+
+    //################################ end dashboard doctor #####################################
+
+    //----------------------------------------------------------------------------
         Route::middleware(['auth:admin'])->group(function () {
 
             //############################# sections route ##########################################
