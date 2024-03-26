@@ -22,43 +22,48 @@ Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ], function () {
+    ],
+    function () {
 
 
-    //################################ dashboard doctor ########################################
+        //################################ dashboard doctor ########################################
 
-    Route::get('/dashboard/doctor', function () {
-        return view('Dashboard.doctor.dashboard');
-    })->middleware(['auth:doctor'])->name('dashboard.admin');
+        Route::get('/dashboard/doctor', function () {
+            return view('Dashboard.doctor.dashboard');
+        })->middleware(['auth:doctor'])->name('dashboard.admin');
 
-    //################################ end dashboard doctor #####################################
+        //################################ end dashboard doctor #####################################
 
-//---------------------------------------------------------------------------------------------------------------
-
-
-    Route::middleware(['auth:doctor'])->group(function () {
-
-        Route::prefix('doctor')->group(function () {
-
-            //############################# invoices route ##########################################
-            Route::resource('invoices', InvoiceController::class);
-            //############################# end invoices route ######################################
-
-              //############################# Diagnostics route ##########################################
-
-              Route::resource('Diagnostics', DiagnosticController::class);
-
-              //############################# end Diagnostics route ######################################
+        //---------------------------------------------------------------------------------------------------------------
 
 
+        Route::middleware(['auth:doctor'])->group(function () {
+
+            Route::prefix('doctor')->group(function () {
+
+                //############################# completed_invoices route ##########################################
+                Route::get('completed_invoices', [InvoiceController::class, 'completedInvoices'])->name('completedInvoices');
+
+                //############################# review_invoices route ##########################################
+                Route::get('review_invoices', [InvoiceController::class, 'reviewInvoices'])->name('reviewInvoices');
+
+                //############################# invoices route ##########################################
+                Route::resource('invoices', InvoiceController::class);
+                //############################# end invoices route ######################################
+
+
+                //############################# review_invoices route ##########################################
+                Route::post('add_review', [DiagnosticController::class, 'addReview'])->name('add_review');
+
+                //############################# Diagnostics route ##########################################
+
+                Route::resource('Diagnostics', DiagnosticController::class);
+
+                //############################# end Diagnostics route ######################################
+
+
+            });
         });
-    });
-    require __DIR__ . '/auth.php';
-
-
-});
-
-
-
-
-
+        require __DIR__ . '/auth.php';
+    }
+);
