@@ -39,10 +39,7 @@ class DiagnosticController extends Controller
     }
 
 
-    public function show($id)
-    {
-        return $this->Diagnosis->show($id);
-    }
+  
 
     public function edit($id)
     {

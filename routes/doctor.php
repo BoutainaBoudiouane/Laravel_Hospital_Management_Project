@@ -3,6 +3,8 @@
 
 use App\Http\Controllers\doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
+use App\Http\Controllers\Dashboard_Doctor\RayController;
+use App\Http\Controllers\Dashboard_Doctor\PatientDetailsController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -60,6 +62,18 @@ Route::group(
                 Route::resource('Diagnostics', DiagnosticController::class);
 
                 //############################# end Diagnostics route ######################################
+                //############################# rays route ##########################################
+
+              Route::resource('rays', RayController::class);
+
+              //############################# end rays route ######################################
+
+
+              //############################# patient_details route ##########################################
+
+              Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
+
+              //############################# end patient_details route ######################################
 
 
             });
