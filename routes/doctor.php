@@ -5,6 +5,7 @@ use App\Http\Controllers\doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
 use App\Http\Controllers\Dashboard_Doctor\RayController;
 use App\Http\Controllers\Dashboard_Doctor\PatientDetailsController;
+use App\Http\Controllers\Dashboard_Doctor\LaboratorieController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -64,16 +65,21 @@ Route::group(
                 //############################# end Diagnostics route ######################################
                 //############################# rays route ##########################################
 
-              Route::resource('rays', RayController::class);
+                Route::resource('rays', RayController::class);
 
-              //############################# end rays route ######################################
+                //############################# end rays route ######################################
+                //############################# Laboratories route ##########################################
+
+                Route::resource('Laboratories', LaboratorieController::class);
+
+                //############################# end Laboratories route ######################################
 
 
-              //############################# patient_details route ##########################################
+                //############################# patient_details route ##########################################
 
-              Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
+                Route::get('patient_details/{id}', [PatientDetailsController::class, 'index'])->name('patient_details');
 
-              //############################# end patient_details route ######################################
+                //############################# end patient_details route ######################################
 
 
             });
