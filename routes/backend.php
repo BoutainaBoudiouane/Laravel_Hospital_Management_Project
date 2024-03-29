@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
+use App\Http\Controllers\Dashboard\RayEmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,6 +127,12 @@ Route::group(
 
         //############################# end Payment route ######################################
 
+        //############################# RayEmployee route ##########################################
+
+        Route::resource('ray_employee', RayEmployeeController::class);
+
+        //############################# end RayEmployee route ######################################
+
          //############################# group_invoices route ##########################################
 
          Route::view('group_invoices','livewire.Group_invoices.index')->name('group_invoices');
@@ -133,6 +140,8 @@ Route::group(
          Route::view('group_Print_single_invoices','livewire.Group_invoices.print')->name('group_Print_single_invoices');
  
          //############################# end group_invoices route ######################################
+
+
 
         });
         require __DIR__ . '/auth.php';

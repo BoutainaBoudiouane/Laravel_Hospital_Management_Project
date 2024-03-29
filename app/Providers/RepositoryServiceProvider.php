@@ -27,6 +27,8 @@ use App\Interfaces\doctor_dashboard\RaysRepositoryInterface;
 use App\Repository\doctor_dashboard\RaysRepository;
 use App\Interfaces\doctor_dashboard\LaboratoriesRepositoryInterface;
 use App\Repository\doctor_dashboard\LaboratoriesRepository;
+use App\Interfaces\RayEmployee\RayEmployeeRepositoryInterface;
+use App\Repository\RayEmployee\RayEmployeeRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -44,6 +46,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PatientRepositoryInterface::class, PatientRepository::class);
         $this->app->bind(ReceiptRepositoryInterface::class, ReceiptRepository::class);
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
+        $this->app->bind(RayEmployeeRepositoryInterface::class, RayEmployeeRepository::class);
          // doctor
          $this->app->bind(InvoicesRepositoryInterface::class, InvoicesRepository::class);
          $this->app->bind(DiagnosisRepositoryInterface::class, DiagnosisRepository::class);
