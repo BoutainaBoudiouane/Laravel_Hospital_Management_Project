@@ -41,7 +41,7 @@
                                 <div class="tab-content">
 
 
-                                    {{-- Strat Show Information Patient --}}
+                                    {{-- Strat Show diagnosis Patient --}}
 
                                     <div class="tab-pane active" id="tab1">
                                         <br>
@@ -65,11 +65,11 @@
                                         @endforeach
                                     </div>
 
-                                    {{-- End Show Information Patient --}}
+                                    {{-- End Show diagnosis Patient --}}
 
 
 
-                                    {{-- Start Invices Patient --}}
+                                    {{-- Start ray Patient --}}
 
                                     <div class="tab-pane" id="tab2">
 
@@ -80,6 +80,8 @@
                                                         <th>#</th>
                                                         <th>اسم الخدمه</th>
                                                         <th>اسم الدكتور</th>
+                                                        <th>اسم موظف الاشعة</th>
+                                                        <th>حالة الكشف</th>
                                                         <th>العمليات</th>
                                                     </tr>
                                                 </thead>
@@ -89,12 +91,21 @@
                                                         <td>{{$loop->iteration}}</td>
                                                         <td>{{$patient_ray->description}}</td>
                                                         <td>{{$patient_ray->doctor->name}}</td>
-                                                        @if($patient_ray->doctor_id == auth()->user()->id)
-                                                        <td>
-                                                            <a class="modal-effect btn btn-sm btn-primary" data-effect="effect-scale" data-toggle="modal" href="#edit_xray_conversion{{$patient_ray->id}}"><i class="fas fa-edit"></i></a>
-                                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-toggle="modal" href="#delete{{$patient_ray->id}}"><i class="las la-trash"></i></a>
-                                                        </td>
-                                                        @endif
+                                                        <td>{{$patient_ray->employee_id !==null ? $patient_ray->employee->name:'NOEmployee'}}</td>
+                                                        <!-- <td>{{$patient_ray->employee->name ?? 'noEmployee'}}</td> -->
+                                                            @if($patient_ray->case == 0)
+                                                                <td class="text-danger">غير مكتملة</td>
+                                                            @else
+                                                                <td class="text-success"> مكتملة</td>
+                                                            @endif
+                                                            @if($patient_ray->doctor_id == auth()->user()->id)
+                                                                @if($patient_ray->case == 0)
+                                                                <td>
+                                                                    <a class="modal-effect btn btn-sm btn-primary" data-effect="effect-scale"  data-toggle="modal" href="#edit_xray_conversion{{$patient_ray->id}}"><i class="fas fa-edit"></i></a>
+                                                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$patient_ray->id}}"><i class="las la-trash"></i></a>
+                                                                </td>
+                                                                @endif
+                                                            @endif
                                                     </tr>
                                                     @include('Dashboard.doctor.invoices.edit_xray_conversion')
                                                     @include('Dashboard.doctor.invoices.deleted')
@@ -104,8 +115,8 @@
                                         </div>
                                     </div>
 
-                                    {{-- End Invices Patient --}}
-                                    {{-- Start Receipt Patient  --}}
+                                    {{-- End ray Patient --}}
+                                    {{-- Start laboratorie Patient  --}}
 
                                     <div class="tab-pane" id="tab3">
                                         <div class="table-responsive">
@@ -139,7 +150,7 @@
                                         </div>
                                     </div>
 
-                                    {{-- End Receipt Patient  --}}
+                                    {{-- End laboratorie Patient  --}}
 
 
 
