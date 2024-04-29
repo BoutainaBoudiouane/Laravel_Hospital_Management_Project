@@ -43,8 +43,6 @@ Route::group(
         })->middleware(['auth'])->name('dashboard.user');
         //################################ end dashboard user #####################################
 
-
-
         //################################ dashboard admin ########################################
         Route::get('/dashboard/admin', function () {
             return view('Dashboard.Admin.dashboard');
@@ -52,16 +50,15 @@ Route::group(
 
         //################################ end dashboard admin #####################################
 
-        
-    //################################ dashboard doctor ########################################
+        //################################ dashboard doctor ########################################
 
-    Route::get('/dashboard/doctor', function () {
-        return view('Dashboard.doctor.dashboard');
-    })->middleware(['auth:doctor'])->name('dashboard.doctor');
+        Route::get('/dashboard/doctor', function () {
+            return view('Dashboard.doctor.dashboard');
+        })->middleware(['auth:doctor'])->name('dashboard.doctor');
 
-    //################################ end dashboard doctor #####################################
+        //################################ end dashboard doctor #####################################
 
-    //----------------------------------------------------------------------------
+        //----------------------------------------------------------------------------
         Route::middleware(['auth:admin'])->group(function () {
 
             //############################# sections route ##########################################
@@ -110,7 +107,7 @@ Route::group(
             //############################# single_invoices route ##########################################
 
             Route::view('single_invoices', 'livewire.single_invoices.index')->name('single_invoices');
-            Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
+            Route::view('Print_single_invoices', 'livewire.single_invoices.print')->name('Print_single_invoices');
 
 
             //############################# end single_invoices route ######################################
@@ -121,25 +118,25 @@ Route::group(
 
             //############################# end Receipt route ######################################
 
-              //############################# Payment route ##########################################
+            //############################# Payment route ##########################################
 
-        Route::resource('Payment', PaymentAccountController::class);
+            Route::resource('Payment', PaymentAccountController::class);
 
-        //############################# end Payment route ######################################
+            //############################# end Payment route ######################################
 
-        //############################# RayEmployee route ##########################################
+            //############################# RayEmployee route ##########################################
 
-        Route::resource('ray_employee', RayEmployeeController::class);
+            Route::resource('ray_employee', RayEmployeeController::class);
 
-        //############################# end RayEmployee route ######################################
+            //############################# end RayEmployee route ######################################
 
-         //############################# group_invoices route ##########################################
+            //############################# group_invoices route ##########################################
 
-         Route::view('group_invoices','livewire.Group_invoices.index')->name('group_invoices');
+            Route::view('group_invoices', 'livewire.Group_invoices.index')->name('group_invoices');
 
-         Route::view('group_Print_single_invoices','livewire.Group_invoices.print')->name('group_Print_single_invoices');
- 
-         //############################# end group_invoices route ######################################
+            Route::view('group_Print_single_invoices', 'livewire.Group_invoices.print')->name('group_Print_single_invoices');
+
+            //############################# end group_invoices route ######################################
 
 
 

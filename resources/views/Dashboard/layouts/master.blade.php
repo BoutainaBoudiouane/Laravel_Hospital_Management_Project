@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<title>برنامج ادارة المستشفيات</title>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
