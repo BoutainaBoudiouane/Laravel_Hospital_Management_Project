@@ -44,6 +44,9 @@ Route::group(
          Route::get('completed_invoices', [InvoiceController::class,'completed_invoices'])->name('completed_invoices');
         //############################# end invoices route ######################################
 
+        //show details of patient rays
+        Route::get('view_rays/{id}', [InvoiceController::class,'viewRays'])->name('view_rays');
+
         });
 
 //---------------------------------------------------------------------------------------------------------------

@@ -41,10 +41,10 @@ class InvoiceController extends Controller
         //
     }
 
-
+//view rays patient 
     public function show($id)
     {
-        //
+        return $this->invoices->show($id);
     }
 
 
