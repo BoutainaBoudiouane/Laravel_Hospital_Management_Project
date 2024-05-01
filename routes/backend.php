@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
+use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,7 +130,11 @@ Route::group(
             Route::resource('ray_employee', RayEmployeeController::class);
 
             //############################# end RayEmployee route ######################################
+            //############################# laboratorie_employee route ##########################################
 
+            Route::resource('laboratorie_employee', LaboratorieEmployeeController::class);
+
+            //############################# end laboratorie_employee route ######################################
             //############################# group_invoices route ##########################################
 
             Route::view('group_invoices', 'livewire.Group_invoices.index')->name('group_invoices');
