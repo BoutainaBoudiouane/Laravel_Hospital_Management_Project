@@ -13,7 +13,7 @@ class PatientTableSeeder extends Seeder
     {
         $Patients = new Patient();
         $Patients->email = 'ghita@gmail.com';
-        $Patients->Password = Hash::make('12345678');
+        $Patients->password = Hash::make('12345678');
         $Patients->Date_Birth = '2006-06-30';
         $Patients->Phone = '123456789';
         $Patients->Gender = 2;

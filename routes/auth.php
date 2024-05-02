@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\DoctorController;
 use App\Http\Controllers\Auth\RayEmployeeController;
 use App\Http\Controllers\Auth\LaboratorieEmployeeController;
+use App\Http\Controllers\Auth\PatientController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -81,7 +82,11 @@ Route::post('/login/laboratorie_employee', [LaboratorieEmployeeController::class
 
 Route::post('/logout/laboratorie_employee', [LaboratorieEmployeeController::class, 'destroy'])->middleware('auth:laboratorie_employee')->name('logout.laboratorie_employee');
 
+//################################## Route patient ##############################################
 
+Route::post('/login/patient', [PatientController::class, 'store'])->middleware('guest')->name('login.patient');
+
+Route::post('/logout/patient', [PatientController::class, 'destroy'])->middleware('auth:patient')->name('logout.patient');
 //##################################################################################
 
 Route::get('verify-email', EmailVerificationPromptController::class)
