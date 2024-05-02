@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
     public const ADMIN = '/dashboard/admin';
     public const DOCTOR = '/dashboard/doctor'; //traget in backend
     public const RayEmployee = '/dashboard/ray_employee';
+    public const LABORATORIEEmployee = '/dashboard/laboratorie_employee';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -50,6 +51,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/ray_employee.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/laboratorie_employee.php'));
         });
     }
 }
