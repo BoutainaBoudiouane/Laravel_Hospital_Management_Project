@@ -4,12 +4,13 @@ namespace App\Repository\Sections;
 use App\Interfaces\Sections\SectionRepositoryInterface;
 use App\Models\Section;
 
+
 class SectionRepository implements SectionRepositoryInterface
 {
 
     public function index()
     {
-      $sections = Section::all();
+      $sections = Section::all();  
       return view('Dashboard.Sections.index',compact('sections'));
     }
 
@@ -23,7 +24,6 @@ class SectionRepository implements SectionRepositoryInterface
         session()->flash('add');
         return redirect()->route('Sections.index');
     }
-  
     public function update($request)
     {
         $section = Section::findOrFail($request->id);
@@ -42,7 +42,6 @@ class SectionRepository implements SectionRepositoryInterface
         session()->flash('delete');
         return redirect()->route('Sections.index');
     }
-
     public function show($id)
     {
         $doctors =Section::findOrFail($id)->doctors;
