@@ -13,11 +13,14 @@ use App\Models\Invoice;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Redirect;
+use App\Events\CreateInvoice;
+use App\Models\Notification;
 
 class SingleInvoices extends Component
 {
     public $InvoiceSaved,$InvoiceUpdated;
     public $show_table = true;
+    public $username;
     public $tax_rate = 17;
     public $updateMode = false;
     public $price,$discount_value = 0 ,$patient_id,$doctor_id,$section_id,$type,$Service_id,$single_invoice_id,$catchError;
@@ -33,6 +36,11 @@ class SingleInvoices extends Component
             'tax_value'=> $Total_after_discount * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100)
         ]);
     }
+
+    public function mount(){
+
+        $this->username = auth()->user()->name;
+     }
 
     public function show_form_add(){
         $this->show_table = false;
@@ -157,12 +165,18 @@ class SingleInvoices extends Component
                     $this->InvoiceSaved =true;
                     $this->show_table =true;
 
+                    $notifications = new Notification();
+                    $notifications->username = $this->username;
+                    $notifications->message = "كشف جديد : ".$this->username;
+                    $notifications->save();
+
+
                     $data=[
-                        'patient_id'=>$this->patient_id,
+                        'patient'=>$this->patient_id,
                         'invoice_id'=>$single_invoices->id,
                     ];
 
-                    event(new SomeEvent($data));
+                    event(new CreateInvoice($data));
                 }
                 DB::commit();
             }
