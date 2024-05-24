@@ -17,4 +17,5 @@ class Conversation extends Model
             where('sender_email',$receiver_email);
 
     }
+    
 }

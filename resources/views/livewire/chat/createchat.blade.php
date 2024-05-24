@@ -17,7 +17,13 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td><button class="btn btn-primary"  wire:click="createConversation('{{$user->email}}')">{{$user->name}}</button></td>
+                                   
+                                  
+                                    <td>
+                                        <button class="btn btn-primary"  wire:click="createConversation('{{$user->email}}')">{{$user->name}}</button>
+                                    </td>
+                                    
+                                   
                                 </tr>
                             @endforeach
                             </tbody>

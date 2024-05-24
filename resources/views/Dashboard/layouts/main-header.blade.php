@@ -253,6 +253,7 @@
     </div>
 </div>
 <!-- /main-header -->
+<script src="{{asset('build/assets/app-CDV8ewK9.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
@@ -275,6 +276,21 @@
         notificationsWrapper.find('.notif-count').text(notificationsCount);
         notificationsWrapper.show();
     });
+
+    // Close notification dropdown when clicking outside
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.dropdown-notifications, .main-header-notification .nav-link').length) {
+            notificationsWrapper.hide();
+        }
+    });
+
+    // Toggle notification dropdown when clicking on the notification icon
+    $('.main-header-notification .nav-link').on('click', function(event) {
+        event.stopPropagation();
+        notificationsWrapper.toggle();
+    });
+
+   
 
 </script>
 

@@ -23,12 +23,14 @@ class Createchat extends Component
 
     public function createConversation($receiver_email)
     {
-
+        // dd($receiver_email);
+     
         $chek_Conversation = Conversation::chekConversation($this->auth_email, $receiver_email)->get();
+        //condition no conversation
         if ($chek_Conversation->isEmpty()) {
             DB::beginTransaction();
             try {
-                // $createConversation
+                // $create Conversation
                 $createConversation = Conversation::create([
                     'sender_email' => $this->auth_email,
                     'receiver_email' => $receiver_email,
