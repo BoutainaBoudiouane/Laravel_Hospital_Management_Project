@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard_Doctor\PatientDetailsController;
 use App\Http\Controllers\Dashboard_Ray_Employee\InvoiceController;
 use App\Http\Controllers\Dashboard_Patient\PatientController;
 use App\Livewire\Chat\Createchat;
+use App\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Livewire\Livewire;
@@ -51,6 +52,7 @@ Route::group(
 
         //############################# Chat route ##########################################
          Route::get('list/doctors',Createchat::class)->name('list.doctors');
+         Route::get('chat/doctors',Main::class)->name('chat.doctors');
        
         //############################# end Chat route ######################################
 

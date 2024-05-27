@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Chat;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class SendMessage extends Component
 {
     public function render()
     {
-        return view('ivewire.chat.send-message');
+        return view('livewire.chat.send-message');
     }
 }
