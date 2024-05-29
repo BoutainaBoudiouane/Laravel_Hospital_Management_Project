@@ -7,6 +7,8 @@ use App\Http\Controllers\Dashboard_Doctor\RayController;
 use App\Http\Controllers\Dashboard_Doctor\PatientDetailsController;
 use App\Http\Controllers\Dashboard_Doctor\LaboratorieController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Chat\Createchat;
+use App\Livewire\Chat\Main;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -71,7 +73,7 @@ Route::group(
                 //############################# Laboratories route ##########################################
 
                 Route::resource('Laboratories', LaboratorieController::class);
-                Route::get('show_laboratorie/{id}', [InvoiceController::class,'showLaboratorie'])->name('show.laboratorie');
+                Route::get('show_laboratorie/{id}', [InvoiceController::class, 'showLaboratorie'])->name('show.laboratorie');
 
                 //############################# end Laboratories route ######################################
 
@@ -82,16 +84,16 @@ Route::group(
 
                 //############################# end patient_details route ######################################
 
+                //############################# Chat route ##########################################
+                Route::get('list/patients', Createchat::class)->name('list.patients');
+                Route::get('chat/patients', Main::class)->name('chat.patients');
+                //############################# end Chat route ######################################
 
 
 
-                
                 Route::get('/404', function () {
                     return view('Dashboard.404');
                 })->name('404');
-
-
-
             });
         });
         require __DIR__ . '/auth.php';
