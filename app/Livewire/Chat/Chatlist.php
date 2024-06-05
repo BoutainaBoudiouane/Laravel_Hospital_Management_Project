@@ -5,13 +5,15 @@ use App\Models\Conversation;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Chatlist extends Component
 {
 
     public $conversations;
     public $auth_email;
-    public $receviverUser;
+    public $receiverUser;
+    public $selected_conversation;
 
     public function mount()
     {
@@ -22,18 +24,36 @@ class Chatlist extends Component
 
 
         if($conversation->sender_email == $this->auth_email){
-            $this->receviverUser = Doctor::firstwhere('email',$conversation->receiver_email);
+            $this->receiverUser = Doctor::firstwhere('email',$conversation->receiver_email);
         }
 
         else{
-            $this->receviverUser = Patient::firstwhere('email',$conversation->sender_email);
+            $this->receiverUser = Patient::firstwhere('email',$conversation->sender_email);
         }
 
         if(isset($request)){
-            return $this->receviverUser->$request;
+            return $this->receiverUser->$request;
         }
 
      }
+
+     public function chatUserSelected(Conversation $conversation, $receiver_id)
+     {
+         $this->selected_conversation = $conversation;
+         $this->receiverUser = Doctor::find($receiver_id);
+ 
+         $payload = [
+             'conversationId' => $this->selected_conversation->id,
+             'receiverUserId' => $this->receiverUser->id
+         ];
+ 
+         if (Auth::guard('patient')->check()) {
+             $this->dispatch('load-conversation-doctor', $payload)->to('chat.chatbox');
+         } else {
+             $this->dispatch('load-conversation-patient', $payload)->to('chat.chatbox');
+         }
+     }
+
 
     public function render()
     {
