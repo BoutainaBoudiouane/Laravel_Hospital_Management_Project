@@ -42,5 +42,10 @@ class SendMessage extends Component
         $this->selected_conversation->last_time_message = $createdMessage->created_at;
         $this->selected_conversation->save();
         $this->reset('body');
+
+        $payload=['messageId' => $createdMessage->id];
+
+        $this->dispatch('pushMessage', $payload)->to('chat.chatbox');
+        $this->dispatch('refresh')->to('chat.chatlist');
     }
 }

@@ -12,7 +12,8 @@ class Chatbox extends Component
 {
     protected $listeners = [
         'load-conversation-doctor' => 'loadConversationDoctor',
-        'load-conversation-patient' => 'loadConversationPatient'
+        'load-conversation-patient' => 'loadConversationPatient',
+        'pushMessage'
     ];
 
     public $selected_conversation;
@@ -39,6 +40,11 @@ class Chatbox extends Component
         $this->messages = Message::where('conversation_id', $this->selected_conversation->id)->get();
     }
 
+    public function pushMessage($payload){
+        $newMessage = Message::find($payload['messageId']);
+        $this->messages->push($newMessage);
+
+    }
     public function render()
     {
         return view('livewire.chat.chatbox');
