@@ -21,22 +21,15 @@ class Chatlist extends Component
         $this->auth_email = auth()->user()->email;
     }
 
-    public function getUsers(Conversation $conversation ,$request){
-
-
-        if($conversation->sender_email == $this->auth_email){
-            $this->receiverUser = Doctor::firstwhere('email',$conversation->receiver_email);
-        }
-
-        else{
-            $this->receiverUser = Patient::firstwhere('email',$conversation->sender_email);
-        }
-
-        if(isset($request)){
-            return $this->receiverUser->$request;
-        }
-
-     }
+    public function getPatientName($conversation, $request)
+    {
+        return Patient::Where('email', $conversation->sender_email)->orWhere('email', $conversation->receiver_email)->first()->$request;
+    }
+    public function getDoctorName($conversation, $request)
+    {
+        return Doctor::Where('email', $conversation->sender_email)->orWhere('email', $conversation->receiver_email)->first()->$request;
+    }
+    
 
      public function chatUserSelected(Conversation $conversation, $receiver_id)
      {
@@ -49,11 +42,13 @@ class Chatlist extends Component
          ];
  
          if (Auth::guard('patient')->check()) {
-             $this->dispatch('load-conversation-doctor', $payload)->to('chat.chatbox');
+             $this->dispatch('loadConversationDoctor', $payload)->to('chat.chatbox');
+             $this->dispatch('updateMessage', $payload)->to('chat.send-message');
          } else {
-             $this->dispatch('load-conversation-patient', $payload)->to('chat.chatbox');
+             $this->dispatch('loadConversationPatient', $payload)->to('chat.chatbox');
+             $this->dispatch('updateMessage2', $payload)->to('chat.send-message');
          }
-         $this->dispatch('updateMessage',$payload)->to('chat.send-message');
+        
      }
 
 
