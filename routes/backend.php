@@ -15,7 +15,7 @@ use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
 use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
-
+use App\Http\Controllers\Dashboard\appointments\AppointmentController;
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -142,6 +142,11 @@ Route::group(
             Route::view('group_Print_single_invoices', 'livewire.Group_invoices.print')->name('group_Print_single_invoices');
 
             //############################# end group_invoices route ######################################
+
+            //############################ Appointments ###################################################
+            Route::get('appointments',[AppointmentController::class,'index'])->name('appointments.index');
+            Route::put('appointments/approval/{id}',[AppointmentController::class,'approval'])->name('appointments.approval');
+            Route::get('appointments/approval',[AppointmentController::class,'index2'])->name('appointments.index2');
 
 
 
