@@ -25,6 +25,13 @@ class AppointmentController extends Controller
         return view('Dashboard.appointments.index2', compact('appointments'));
     }
 
+    public function index3()
+    {
+
+        $appointments = Appointment::where('type', 'منتهي')->get();
+        return view('Dashboard.appointments.index3', compact('appointments'));
+    }
+    
     public function approval(Request $request, $id)
     {
         $appointment = Appointment::findorFail($id);
@@ -49,6 +56,13 @@ class AppointmentController extends Controller
         ]);
 
         session()->flash('add');
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        Appointment::destroy($id);
+        session()->flash('delete');
         return back();
     }
 }
