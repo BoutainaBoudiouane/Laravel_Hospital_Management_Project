@@ -60,7 +60,7 @@ class Create extends Component
         $appointment->save();
 
         $this->message = true;
-        $this->reset('section_id', 'doctor', 'name', 'email', 'phone', 'notes');
-        $this->doctors=[];
+        // $this->reset('section_id', 'doctor', 'name', 'email', 'phone', 'notes');
+        // $this->doctors=[];
     }
 }

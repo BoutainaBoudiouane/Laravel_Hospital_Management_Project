@@ -22,6 +22,11 @@
 @endsection
 @section('content')
     @include('Dashboard.messages_alert')
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <!-- row opened -->
     <div class="row row-sm">
         <!--div-->
