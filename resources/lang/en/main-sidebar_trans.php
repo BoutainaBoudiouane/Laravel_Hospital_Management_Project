@@ -29,6 +29,11 @@ return array (
     'Appointment_List' => 'Appointment list',
     'Confirmed_Appointments' => 'Confirmed appointments',
     'Completed_Appointments' => 'Completed appointments',
+    'Notifications' => 'Notifications',
+    'Mark_all_Read' => 'Mark all Read',
+    'profile' => 'Profile',
+    'edit_profile' => 'Edit Profile',
+    'logout' => 'Logout',
 );
 
 

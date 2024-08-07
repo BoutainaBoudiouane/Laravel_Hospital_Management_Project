@@ -30,4 +30,9 @@ return array (
     'Appointment_List' => 'قائمة المواعيد',
     'Confirmed_Appointments' => 'المواعيد المؤكدة',
     'Completed_Appointments' => 'المواعيد المكتملة',
+    'Notifications' => 'الإشعارات',
+    'Mark_all_Read' => 'تمت قراءة الكل',
+    'profile' => 'الملف الشخصي',
+    'edit_profile' => 'تعديل الملف الشخصي',
+    'logout' => 'تسجيل الخروج',
 );
