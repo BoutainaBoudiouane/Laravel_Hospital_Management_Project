@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
 use App\Http\Controllers\Dashboard\LaboratorieEmployeeController;
 use App\Http\Controllers\Dashboard\appointments\AppointmentController;
+use App\Http\Controllers\Dashboard\HomeController;
 /*
 |--------------------------------------------------------------------------
 | backend Routes
@@ -149,6 +150,9 @@ Route::group(
             Route::get('appointments/approval',[AppointmentController::class,'index2'])->name('appointments.index2');
             Route::get('appointments/finished',[AppointmentController::class,'index3'])->name('appointments.index3');
             Route::delete('appointments/destroy/{id}',[AppointmentController::class,'destroy'])->name('appointments.destroy');
+
+            //appointment charts
+            Route::get('/dashboard/admin', [HomeController::class, 'index'])->name('dashboard.admin');
 
 
 
