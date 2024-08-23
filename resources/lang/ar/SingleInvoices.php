@@ -41,5 +41,5 @@ return array(
     'total' => 'الاجمالي',
     'adress' => 'شارع أنفا الدار البيضاء',
 
-   
+   'group_invoice_title' => 'فاتورة مجموعة خدمات',
 );
