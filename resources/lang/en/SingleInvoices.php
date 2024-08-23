@@ -33,12 +33,10 @@ return array(
   'delete_invoice' => 'Delete Invoice Data',
   'confirm_delete' => 'Are you sure you want to delete?',
   'close' => 'Close',
-  'delete' => 'Delete',
   //
   'print_invoices' => 'Print Invoices',
   'single_service_invoice' => 'Single Service Invoice',
   'invoice_info' => 'Invoice Information',
-  'invoice_date' => 'Invoice Date',
   'doctor' => 'Doctor',
   'total' => 'Total',
   'adress' => 'Boulevard Anfa Casablanca',

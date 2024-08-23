@@ -33,12 +33,10 @@ return array(
     'delete_invoice' => 'حذف بيانات الفاتورة',
     'confirm_delete' => 'هل انت متاكد من عملية الحذف',
     'close' => 'اغلاق',
-    'delete' => 'حذف',
     //
     'print_invoices' => 'طباعه الفواتير',
     'single_service_invoice' => 'فاتوره خدمه مفرده',
     'invoice_info' => 'معلومات الفاتوره',
-    'invoice_date' => 'تاريخ الفاتوره',
     'doctor' => 'الدكتور',
     'total' => 'الاجمالي',
     'adress' => 'شارع أنفا الدار البيضاء',
