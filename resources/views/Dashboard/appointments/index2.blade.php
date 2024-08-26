@@ -13,7 +13,8 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المواعيد</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ المواعيد المؤكدة</span>
+            <h4 class="content-title mb-0 my-auto">{{ trans('appointment.appointments') }}</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ trans('appointment.confirmed_appointments') }}</span>
         </div>
     </div>
 </div>
@@ -32,30 +33,28 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>اسم المريض</th>
-                                <th>البريد الالكتروني</th>
-                                <th>القسم</th>
-                                <th>الدكتور</th>
-                                <th>تاريخ الموعد</th>
-                                <th>الهاتف</th>
-                                <th>العمليات</th>
+                                <th>{{ trans('appointment.patient_name') }}</th>
+                                <th>{{ trans('appointment.email') }}</th>
+                                <th>{{ trans('appointment.section') }}</th>
+                                <th>{{ trans('appointment.doctor') }}</th>
+                                <th>{{ trans('appointment.appointment_date') }}</th>
+                                <th>{{ trans('appointment.phone') }}</th>
+                                <th>{{ trans('appointment.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($appointments as $appointment)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$appointment->name}}</a></td>
+                                <td>{{$appointment->name}}</td>
                                 <td>{{$appointment->email}}</td>
                                 <td>{{$appointment->section->name}}</td>
                                 <td>{{$appointment->doctor->name}}</td>
                                 <td>{{$appointment->appointment}}</td>
                                 <td>{{$appointment->phone}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#approval{{$appointment->id}}"><i class="fas fa-check"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#Deleted{{ $appointment->id }}"><i class="fas fa-remove-format"></i>
-                                    </button>
+                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#approval{{$appointment->id}}"><i class="fas fa-check"></i></button>
+                                    <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#Deleted{{ $appointment->id }}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                             @include('Dashboard.appointments.approval')
@@ -85,7 +84,6 @@
 <!--Internal  Notify js -->
 <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
 <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
-
 
 <!--Internal  Datepicker js -->
 <script src="{{URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
