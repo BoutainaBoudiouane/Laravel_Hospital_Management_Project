@@ -19,7 +19,7 @@ return [
     'warning' => 'Are you sure you want to delete this receipt?',
     'close' => 'Close',
     //
-      'title' => 'Print Preview',
+      'title_print' => 'Print Preview',
     'breadcrumb_main' => 'Receipt',
     'breadcrumb_sub' => 'Print Receipt',
     'invoice_title' => 'Receipt',
