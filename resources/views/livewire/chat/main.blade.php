@@ -1,11 +1,10 @@
-
 @section('css')
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
-            <div class="d-flex"><h4 class="content-title mb-0 my-auto">المحادثات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ المحادثات الاخيرة</span></div>
+            <div class="d-flex"><h4 class="content-title mb-0 my-auto">{{ trans('messages.Conversations') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/  {{ trans('messages.Recent Conversations') }}</span></div>
         </div>
     </div>
     <!-- breadcrumb -->
@@ -17,9 +16,9 @@
             <div class="card">
                 <div class="main-content-left main-content-left-chat">
                     <nav class="nav main-nav-line main-nav-line-chat">
-                        <a class="nav-link active" data-toggle="tab" href="">المحادثات الاخيرة</a>
+                        <a class="nav-link active" data-toggle="tab" href="">{{ trans('messages.Recent Conversations') }}</a>
                     </nav>
-                     @livewire('chat.chatlist')
+                    @livewire('chat.chatlist')
                 </div>
             </div>
         </div>
@@ -36,7 +35,6 @@
     <!-- Container closed -->
     </div>
     <!-- main-content closed -->
-
 @section('js')
     <!--Internal  lightslider js -->
     <script src="{{URL::asset('Dashboard/plugins/lightslider/js/lightslider.min.js')}}"></script>
