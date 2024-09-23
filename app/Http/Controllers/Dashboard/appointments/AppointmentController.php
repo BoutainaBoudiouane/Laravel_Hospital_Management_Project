@@ -91,6 +91,17 @@ class AppointmentController extends Controller
         session()->flash('add');
         return back();
     }
+    public function approval2(Request $request, $id)
+    {
+        $appointment = Appointment::findorFail($id);
+
+        $appointment->update([
+            'type' => 'منتهي',
+            'appointment' => $request->appointment
+        ]);
+        session()->flash('add');
+        return back();
+    }
 
     public function destroy($id)
     {
