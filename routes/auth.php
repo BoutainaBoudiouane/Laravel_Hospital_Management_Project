@@ -24,8 +24,8 @@ Route::get('register', [RegisteredUserController::class, 'create'])
 
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
-//##################################  Route User################################## 
 
+//User route
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
     ->name('login');
@@ -38,8 +38,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout.user');
 
-//################################## Route Admin ##############################################
-
+//Admin route
 Route::post('/login/admin', [AdminController::class, 'store'])
     ->middleware('guest')
     ->name('login.admin');
@@ -63,32 +62,23 @@ Route::post('reset-password', [NewPasswordController::class, 'store'])
     ->middleware('guest')
     ->name('password.store');
 
-
-//################################## Route Doctor ##############################################
-
+//Doctor route
 Route::post('/login/doctor', [DoctorController::class, 'store'])->middleware('guest')->name('login.doctor');
-
 Route::post('/logout/doctor', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('logout.doctor');
 
-//################################## Route RayEmployee ##############################################
-
+//RayEmployee route
 Route::post('/login/ray_employee', [RayEmployeeController::class, 'store'])->middleware('guest')->name('login.ray_employee');
-
 Route::post('/logout/ray_employee', [RayEmployeeController::class, 'destroy'])->middleware('auth:ray_employee')->name('logout.ray_employee');
 
-//################################## Route laboratorie_employee ##############################################
-
+//laboratorie_employee route
 Route::post('/login/laboratorie_employee', [LaboratorieEmployeeController::class, 'store'])->middleware('guest')->name('login.laboratorie_employee');
-
 Route::post('/logout/laboratorie_employee', [LaboratorieEmployeeController::class, 'destroy'])->middleware('auth:laboratorie_employee')->name('logout.laboratorie_employee');
 
-//################################## Route patient ##############################################
-
+//Patient route
 Route::post('/login/patient', [PatientController::class, 'store'])->middleware('guest')->name('login.patient');
-
 Route::post('/logout/patient', [PatientController::class, 'destroy'])->middleware('auth:patient')->name('logout.patient');
-//##################################################################################
 
+//-----------------------
 Route::get('verify-email', EmailVerificationPromptController::class)
     ->middleware('auth')
     ->name('verification.notice');
